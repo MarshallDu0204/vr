@@ -1,6 +1,6 @@
 Android
 PlayerPath?
-C:/Users/Lenovo/Documents/1.apk
+C:/Users/Lenovo/Documents/2.apk
 SceneListBegin?
 Assets/Scenes/SampleScene.unity
 SceneListEnd?
