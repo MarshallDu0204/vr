@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Control.cs" />
+     <Compile Include="Assets\test.cs" />
      <None Include="Assets\FbxExporters\RELEASE_NOTES.txt" />
      <None Include="Assets\FbxExporters\README.txt" />
      <None Include="Assets\FbxExporters\LICENSE.txt" />
