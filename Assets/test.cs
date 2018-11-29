@@ -17,7 +17,7 @@ public class test : MonoBehaviour {
 	public GameObject spot2;
 	public GameObject spot3;
 	public GameObject spot4;
-  	//private Material otherMat;
+  	
 	public Control control;
 	
 	public GameObject breakObject1;
@@ -31,7 +31,6 @@ public class test : MonoBehaviour {
 	public GameObject repairObject4;
 	public GameObject repairObject5;
 	public GameObject repairObject6;
-	public GameObject repairObject7;
 	
 	public GameObject cover1;
 	public GameObject cover2;
@@ -50,6 +49,7 @@ public class test : MonoBehaviour {
 	
 	public Texture fixTexture1;
 	public Texture fixTexture2;
+	public Texture fixTexture3;
 
 	// Use this for initialization
 	void Start () {
@@ -67,14 +67,14 @@ public class test : MonoBehaviour {
 			Destroy(spot4);
 			
 			breakObject1.GetComponent<Renderer>().material.color = Color.black;
-			breakObject2.GetComponent<Renderer>().material.color = Color.yellow;
+			//breakObject2.GetComponent<Renderer>().material.color = Color.yellow;
 			breakObject3.GetComponent<Renderer>().material.mainTexture = breakTexture;
 			breakObject4.GetComponent<Renderer>().material.mainTexture = breakTexture;
 		}
 		if (type==2){ // train mode
 			switch1 = 1;
 			breakObject1.GetComponent<Renderer>().material.color = Color.black;
-			breakObject2.GetComponent<Renderer>().material.color = Color.yellow;
+			//breakObject2.GetComponent<Renderer>().material.color = Color.yellow;
 			breakObject3.GetComponent<Renderer>().material.mainTexture = breakTexture;
 			breakObject4.GetComponent<Renderer>().material.mainTexture = breakTexture;
 		}
@@ -99,7 +99,7 @@ public class test : MonoBehaviour {
         {
             
 			name = hitInfo.collider.gameObject.name;
-			MeshRenderer otherRenderer = hitInfo.collider.gameObject.GetComponent<MeshRenderer>();
+			
 
 		    if (name != null)
             {
@@ -166,7 +166,7 @@ public class test : MonoBehaviour {
 								gazeTime += Time.deltaTime;
 							}
 							
-							if (name == "repairObject7" && repairIndex3 == 1) {
+							if (name == "repairObject6" && repairIndex3 == 2) {
 								gazeTime += Time.deltaTime;
 							}
 							//==========================//
@@ -189,7 +189,7 @@ public class test : MonoBehaviour {
 						
 					}          				 
 						
-					 //otherMat = otherRenderer.material; 
+					 
                 
 			     
 		    }
@@ -250,13 +250,13 @@ public class test : MonoBehaviour {
 			
 			if (previousname == "repairObject1"){
 				repairIndex1 = 1;
-				repairObject1.transform.Rotate(0,90,0);
+				repairObject1.GetComponent<Renderer>().material.mainTexture = fixTexture3;
 				print("repairObject1");
 			}
 
 			if (previousname == "repairObject2"){
 				repairIndex1 = 2;
-				repairObject2.transform.Rotate(90,0,0);
+				repairObject2.GetComponent<Renderer>().material.mainTexture = fixTexture3;
 				print("repairObject2");
 			}
 			
@@ -279,13 +279,13 @@ public class test : MonoBehaviour {
 			
 			if (previousname == "repairObject3"){
 				repairIndex2 = 2;
-				repairObject3.transform.Rotate(Vector3.up*90.0f,Space.Self);
+				repairObject3.GetComponent<Renderer>().material.mainTexture = fixTexture3;
 				print("repairObject3");
 			}
 			
 			if (previousname == "repairObject4"){
 				repairIndex2 = 3;
-				repairObject4.transform.Rotate(Vector3.up*90.0f,Space.Self);
+				repairObject4.GetComponent<Renderer>().material.mainTexture = fixTexture3;
 				print("repairObject4");
 			}
 			
@@ -295,21 +295,22 @@ public class test : MonoBehaviour {
 			//==========================//
 			if (previousname == "breakObject2"){
 				repairIndex3 = 1;
-				breakObject2.GetComponent<Renderer>().material.color = Color.black;
+				breakObject2.transform.Rotate(90,0,0);
 			}
 			
-			if (previousname == "repairObject7"){
-				repairObject7.GetComponent<Renderer>().material.color = Color.green;
+			if (previousname == "repairObject6"){
+				repairObject6.GetComponent<Renderer>().material.color = Color.green;
 			}
 			//==========================//
 			if (previousname == "cover2(1)"){
 				if (open2 ==0){
 					repairIndex4 = 1;
-					cover2.transform.Rotate(Vector3.up*90.0f,Space.Self);
+					repairIndex3 = 2;
+					cover2.transform.Rotate(90,0,0);
 					open2 = 1;
 				}
 				if (open2 == 1){
-					cover2.transform.Rotate(Vector3.down*90.0f,Space.Self);
+					cover2.transform.Rotate(90,0,0);
 					open2 = 0;
 				}
 			}
