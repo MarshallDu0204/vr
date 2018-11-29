@@ -66,15 +66,13 @@ public class test : MonoBehaviour {
 			Destroy(spot3);
 			Destroy(spot4);
 			
-			breakObject1.GetComponent<Renderer>().material.color = Color.black;
-			//breakObject2.GetComponent<Renderer>().material.color = Color.yellow;
+			breakObject1.GetComponent<Renderer>().material.color = Color.black;			
 			breakObject3.GetComponent<Renderer>().material.mainTexture = breakTexture;
 			breakObject4.GetComponent<Renderer>().material.mainTexture = breakTexture;
 		}
 		if (type==2){ // train mode
 			switch1 = 1;
 			breakObject1.GetComponent<Renderer>().material.color = Color.black;
-			//breakObject2.GetComponent<Renderer>().material.color = Color.yellow;
 			breakObject3.GetComponent<Renderer>().material.mainTexture = breakTexture;
 			breakObject4.GetComponent<Renderer>().material.mainTexture = breakTexture;
 		}
@@ -95,107 +93,109 @@ public class test : MonoBehaviour {
 		Ray ray = new Ray(this.transform.position, this.transform.forward);
 		RaycastHit hitInfo;
 		
-		if (Physics.Raycast(ray, out hitInfo, Mathf.Infinity))
-        {
+		if (Physics.Raycast(ray, out hitInfo, Mathf.Infinity)){
             
 			name = hitInfo.collider.gameObject.name;
 			
-
-		    if (name != null)
-            {
+		    if (name != null){
 			    
-					if (previousname == ""){
-						previousname = name;
+				if (previousname == ""){
+					previousname = name;
+				}
+				if (previousname != name){
+					previousname = name;
+					gazeTime = 0f;
+				}
+				if (previousname == name){
+					if (name == "mainoption3" || name == "mainoption2" || name == "mainoption1"){
+						gazeTime += Time.deltaTime; 
 					}
-					if (previousname != name){
-						previousname = name;
-						gazeTime = 0f;
-					}
-					if (previousname == name){
-						if (name == "mainoption3" || name == "mainoption2" || name == "mainoption1"){
-							gazeTime += Time.deltaTime; 
+						
+					if (switch1 == 1){
+						
+						//============remove all the tips==============//
+						
+						if (name == "spot1") {
+							gazeTime += Time.deltaTime;
+						}
+							
+						if (name == "spot2") {
+							gazeTime += Time.deltaTime;
+						}
+							
+						if (name == "spot3") {
+							gazeTime += Time.deltaTime;
+						}
+							
+						if (name == "spot4") {
+							gazeTime += Time.deltaTime;
 						}
 						
-						if (switch1 == 1){
-							//==========================//
-							if (name == "spot1") {
-								gazeTime += Time.deltaTime;
-							}
+						//=============repair the first object=============//
+						
+						if (name == "repairObject1") {
+							gazeTime += Time.deltaTime;
+						}
 							
-							if (name == "spot2") {
-								gazeTime += Time.deltaTime;
-							}
+						if (name == "repairObject2" && repairIndex1 == 1) {
+							gazeTime += Time.deltaTime;
+						}
 							
-							if (name == "spot3") {
-								gazeTime += Time.deltaTime;
-							}
-							
-							if (name == "spot4") {
-								gazeTime += Time.deltaTime;
-							}
-							//==========================//
-							if (name == "repairObject1") {
-								gazeTime += Time.deltaTime;
-							}
-							
-							if (name == "repairObject2" && repairIndex1 == 1) {
-								gazeTime += Time.deltaTime;
-							}
-							
-							if (name == "breakObject1" && repairIndex1 == 2) {
-								gazeTime += Time.deltaTime;
-							}
-							//==========================//
-							if (name == "cover1(1)") {
-								gazeTime += Time.deltaTime;
-							}
-							
-							if (name == "repairObject3" && repairIndex2 == 1){
-								gazeTime += Time.deltaTime;
-							}
-							
-							if (name == "repairObject4" && repairIndex2 == 2){
-								gazeTime += Time.deltaTime;
-							}
-							
-							if (name == "breakObject4" && repairIndex2 == 3){
-								gazeTime += Time.deltaTime;
-							}
-							//==========================//
-							if (name == "breakObject2") {
-								gazeTime += Time.deltaTime;
-							}
-							
-							if (name == "repairObject6" && repairIndex3 == 2) {
-								gazeTime += Time.deltaTime;
-							}
-							//==========================//
-							if (name == "cover2(1)"){
-								gazeTime += Time.deltaTime;
-							}
-							
-							if (name == "repairObject5" && repairIndex4 == 1){
-								gazeTime += Time.deltaTime;
-							}
-							
-							if (name == "breakObject3" && repairIndex4 == 2){
-								gazeTime += Time.deltaTime;
-							}
-							
-							
-							
+						if (name == "breakObject1" && repairIndex1 == 2) {
+							gazeTime += Time.deltaTime;
 						}
 						
+						//============repair the second object==============//
 						
-					}          				 
+						if (name == "cover1(1)") {
+							gazeTime += Time.deltaTime;
+						}
+							
+						if (name == "repairObject3" && repairIndex2 == 1){
+							gazeTime += Time.deltaTime;
+						}
+							
+						if (name == "repairObject4" && repairIndex2 == 2){
+							gazeTime += Time.deltaTime;
+						}
+							
+						if (name == "breakObject4" && repairIndex2 == 3){
+							gazeTime += Time.deltaTime;
+						}
 						
-					 
-                
-			     
+						//===========repair the third object===============//
+						
+						if (name == "breakObject2") {
+							gazeTime += Time.deltaTime;
+						}
+							
+						if (name == "repairObject6" && repairIndex3 == 2) {
+							gazeTime += Time.deltaTime;
+						}
+						
+						//=============repair the fourth object=============//
+						
+						if (name == "cover2(1)"){
+							gazeTime += Time.deltaTime;
+						}
+							
+						if (name == "repairObject5" && repairIndex4 == 1){
+							gazeTime += Time.deltaTime;
+						}
+							
+						if (name == "breakObject3" && repairIndex4 == 2){
+							gazeTime += Time.deltaTime;
+						}
+													
+							
+					}
+												
+				}          				 
+								 
+               		     
 		    }
             
-		    else
-			{
+		    else{
                 
 				name = "";
             
@@ -204,8 +204,7 @@ public class test : MonoBehaviour {
         
 	    }
         
-        else
-        {
+        else{
             
 			name = "";
 				
@@ -218,7 +217,9 @@ public class test : MonoBehaviour {
         {
             gazeTime = 0f;         
 			control.give();
-			//==========================//
+			
+			//============remove the options==============//
+			
 			if (previousname == "mainoption3"){
 				controller(3);
 			}
@@ -230,7 +231,9 @@ public class test : MonoBehaviour {
 			if (previousname == "mainoption1"){
 				controller(1);
 			}
-			//==========================//
+			
+			//============remove tips==============//
+			
 			if (previousname == "spot1"){
 				Destroy(spot1);
 			}
@@ -246,7 +249,8 @@ public class test : MonoBehaviour {
 			if (previousname == "spot4"){
 				Destroy(spot4);
 			}
-			//==========================//
+			
+			//============repair the first object==============//
 			
 			if (previousname == "repairObject1"){
 				repairIndex1 = 1;
@@ -263,7 +267,9 @@ public class test : MonoBehaviour {
 			if (previousname == "breakObject1"){
 				breakObject1.GetComponent<Renderer>().material.color = Color.grey;
 			}
-			//==========================//
+			
+			//============repair the second object==============//
+			
 			if (previousname == "cover1(1)"){
 				if (open1==0){
 					repairIndex2 = 1;
@@ -292,7 +298,9 @@ public class test : MonoBehaviour {
 			if (previousname == "breakObject4"){
 				breakObject4.GetComponent<Renderer>().material.mainTexture = fixTexture1;
 			}
-			//==========================//
+			
+			//=============repair the third object=============//
+			
 			if (previousname == "breakObject2"){
 				repairIndex3 = 1;
 				breakObject2.transform.Rotate(90,0,0);
@@ -301,7 +309,9 @@ public class test : MonoBehaviour {
 			if (previousname == "repairObject6"){
 				repairObject6.GetComponent<Renderer>().material.color = Color.green;
 			}
-			//==========================//
+			
+			//==============repair the fourth object============//
+			
 			if (previousname == "cover2(1)"){
 				if (open2 ==0){
 					repairIndex4 = 1;
@@ -324,9 +334,8 @@ public class test : MonoBehaviour {
 				breakObject3.GetComponent<Renderer>().material.mainTexture = fixTexture2;
 			}
         }
-        else
-        {
-            img.fillAmount = 1 - (gazeTime / waitTime); 
+        else{
+            img.fillAmount = 1 - (gazeTime / waitTime); //roll the spot
         }
  
 	}

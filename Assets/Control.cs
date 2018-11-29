@@ -11,11 +11,11 @@ public class Control : MonoBehaviour {
 		audioData = GetComponent<AudioSource>();
 	}
 
-	public void give(){
+	public void give(){//give the permission to control the robot
 		permission = true;
 	}
 	
-	public void removePermission(){
+	public void removePermission(){// remove the permission
 		permission = false;
 	}
 
@@ -30,13 +30,13 @@ public class Control : MonoBehaviour {
 			if (Input.GetAxis("Vertical")>0){
 				this.transform.Rotate(Vector3.back*0.5f,Space.Self);
 			}
-			if (Input.GetAxis("Horizontal")<0 && Input.GetAxis("Horizontal")>-0.95){
+			if (Input.GetAxis("Horizontal")<0 && Input.GetAxis("Horizontal")>-0.95){//light push for first kind of turn
 				this.transform.Rotate(Vector3.down*0.5f,Space.Self);
 			}
 			if (Input.GetAxis("Horizontal")>0 && Input.GetAxis("Horizontal")<0.95){
 				this.transform.Rotate(Vector3.up*0.5f,Space.Self);
 			}
-			if (Input.GetAxis("Horizontal")>=0.95)
+			if (Input.GetAxis("Horizontal")>=0.95)// hard push for second turn
 			{
 				this.transform.Rotate(Vector3.left*0.5f,Space.Self);
 			}
@@ -44,7 +44,7 @@ public class Control : MonoBehaviour {
 			{
 				this.transform.Rotate(Vector3.right*0.5f,Space.Self);
 			}
-			if (Input.GetKey(KeyCode.Joystick1Button0))
+			if (Input.GetKey(KeyCode.Joystick1Button0))//go
 			{
 				this.transform.Translate(Vector3.right*0.1f,Space.Self);
 			}
@@ -56,7 +56,7 @@ public class Control : MonoBehaviour {
 			{
 				audioData.Pause();
 			}
-			if (Input.GetKey(KeyCode.Joystick1Button2))
+			if (Input.GetKey(KeyCode.Joystick1Button2))//back
 			{
 				this.transform.Translate(Vector3.left*0.1f,Space.Self);						
 			}
