@@ -17,6 +17,12 @@ public class test : MonoBehaviour {
 	public GameObject spot2;
 	public GameObject spot3;
 	public GameObject spot4;
+	
+	public GameObject Info1;
+	public GameObject Info2;
+	public GameObject Info3;
+	public GameObject Info4;
+	public GameObject Info5;
   	
 	public Control control;
 	
@@ -50,6 +56,12 @@ public class test : MonoBehaviour {
 	public Texture fixTexture1;
 	public Texture fixTexture2;
 	public Texture fixTexture3;
+	public Texture fixTexture4;
+	
+	public Texture success;
+	
+	public int trainIndex = 0;
+	
 
 	// Use this for initialization
 	void Start () {
@@ -65,6 +77,12 @@ public class test : MonoBehaviour {
 			Destroy(spot2);
 			Destroy(spot3);
 			Destroy(spot4);
+			
+			Destroy(Info1);
+			Destroy(Info2);
+			Destroy(Info3);
+			Destroy(Info4);
+			Destroy(Info5);
 			
 			breakObject1.GetComponent<Renderer>().material.color = Color.black;			
 			breakObject3.GetComponent<Renderer>().material.mainTexture = breakTexture;
@@ -83,6 +101,12 @@ public class test : MonoBehaviour {
 			Destroy(spot2);
 			Destroy(spot3);
 			Destroy(spot4);
+			
+			Destroy(Info1);
+			Destroy(Info2);
+			Destroy(Info3);
+			Destroy(Info4);
+			Destroy(Info5);
 		}
 	}
 	
@@ -130,6 +154,7 @@ public class test : MonoBehaviour {
 						if (name == "spot4") {
 							gazeTime += Time.deltaTime;
 						}
+						
 						
 						//=============repair the first object=============//
 						
@@ -200,7 +225,6 @@ public class test : MonoBehaviour {
 				name = "";
             
 		    }
- 
         
 	    }
         
@@ -226,6 +250,7 @@ public class test : MonoBehaviour {
 			
 			if (previousname == "mainoption2"){
 				controller(2);
+				trainIndex = 1;
 			}
 			
 			if (previousname == "mainoption1"){
@@ -266,6 +291,9 @@ public class test : MonoBehaviour {
 			
 			if (previousname == "breakObject1"){
 				breakObject1.GetComponent<Renderer>().material.color = Color.grey;
+				if (trainIndex == 1){
+					Info1.GetComponent<Renderer>().material.mainTexture = success;
+				}
 			}
 			
 			//============repair the second object==============//
@@ -297,6 +325,9 @@ public class test : MonoBehaviour {
 			
 			if (previousname == "breakObject4"){
 				breakObject4.GetComponent<Renderer>().material.mainTexture = fixTexture1;
+				if (trainIndex == 1){
+					Info2.GetComponent<Renderer>().material.mainTexture = success;
+				}
 			}
 			
 			//=============repair the third object=============//
@@ -308,6 +339,9 @@ public class test : MonoBehaviour {
 			
 			if (previousname == "repairObject6"){
 				repairObject6.GetComponent<Renderer>().material.color = Color.green;
+				if (trainIndex == 1){
+					Info3.GetComponent<Renderer>().material.mainTexture = success;
+				}
 			}
 			
 			//==============repair the fourth object============//
@@ -332,6 +366,9 @@ public class test : MonoBehaviour {
 			
 			if (previousname == "breakObject3"){
 				breakObject3.GetComponent<Renderer>().material.mainTexture = fixTexture2;
+				if (trainIndex == 1){
+					Info5.GetComponent<Renderer>().material.mainTexture = success;
+				}
 			}
         }
         else{
