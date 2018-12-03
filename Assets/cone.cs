@@ -1,3 +1,5 @@
+// Imortant notes ** remove this script when build Android project
+
 using System.Collections;
 
 using System.Collections.Generic;

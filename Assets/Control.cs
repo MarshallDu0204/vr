@@ -44,7 +44,7 @@ public class Control : MonoBehaviour {
 			{
 				this.transform.Rotate(Vector3.right*0.5f,Space.Self);
 			}
-			if (Input.GetKey(KeyCode.X))//go
+			if (Input.GetKey(KeyCode.Joystick1Button0))//go
 			{
 				this.transform.Translate(Vector3.right*0.1f,Space.Self);
 			}
@@ -56,7 +56,7 @@ public class Control : MonoBehaviour {
 			{
 				audioData.Pause();
 			}
-			if (Input.GetKey(KeyCode.Z))//back
+			if (Input.GetKey(KeyCode.Joystick1Button2))//back
 			{
 				this.transform.Translate(Vector3.left*0.1f,Space.Self);						
 			}
